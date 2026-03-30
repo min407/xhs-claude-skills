@@ -80,6 +80,25 @@ Core argument, 2-3 sentences.
 > Source · date · stats · tags
 ```
 
+## 📋 Prerequisites
+
+| | Description | Install |
+|:--|:------------|:--------|
+| 🤖 **Claude Code** | Runtime environment for this plugin | [Install guide](https://docs.anthropic.com/en/docs/claude-code) |
+| 📓 **Obsidian** | Note destination (just needs the vault folder — no CLI required) | [Download](https://obsidian.md) |
+| 🍎 **macOS** | Apple Silicon recommended | — |
+
+> 💡 No Obsidian CLI needed. The plugin simply writes `.md` files into your vault folder — Obsidian picks them up automatically.
+
+### Video transcription (optional)
+
+Text/image posts work with zero extra dependencies. Video transcription requires:
+
+| | Install | Purpose |
+|:--|:--------|:--------|
+| 🎵 ffmpeg | `brew install ffmpeg` | Audio extraction |
+| 🗣 mlx-whisper | `pip install mlx-whisper` | Speech-to-text (runs locally) |
+
 ## 🚀 Quick start
 
 ### 1. Install the plugin
@@ -104,15 +123,6 @@ On first run, the skill will detect no cookies and **guide you through a 30-seco
 
 > 🔄 When cookies expire, the skill detects it and re-prompts. No manual checking needed.
 
-### 3. Dependencies (video transcription only)
-
-| | Install | Required for |
-|:--|:--------|:-------------|
-| 🎵 ffmpeg | `brew install ffmpeg` | Audio extraction |
-| 🗣 mlx-whisper | `pip install mlx-whisper` | Speech-to-text |
-
-> 💡 Text/image posts work with zero dependencies. Video transcription needs the above.
-
 ## ⚙️ Configuration
 
 Edit paths in `skills/xhs/SKILL.md` if your setup differs:
@@ -124,7 +134,7 @@ Edit paths in `skills/xhs/SKILL.md` if your setup differs:
 
 ## 🎨 Personalization
 
-Each note includes a **"Relevance"** line connecting the content to your background. Edit the user description in `skills/xhs/SKILL.md` (step 4) to match your context.
+Each note includes a **"Relevance"** line connecting the content to your background. The skill reads from Claude Code's memory system (`~/.claude/projects/*/memory/`) to understand who you are. No manual configuration needed — just use Claude Code normally and it learns your context over time.
 
 ## 📁 Plugin structure
 

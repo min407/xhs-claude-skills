@@ -80,6 +80,25 @@ xhs/
 > 来源 · 日期 · 互动 · 标签
 ```
 
+## 📋 前置要求
+
+| | 说明 | 安装 |
+|:--|:-----|:-----|
+| 🤖 **Claude Code** | 本插件运行环境 | [安装指南](https://docs.anthropic.com/en/docs/claude-code) |
+| 📓 **Obsidian** | 笔记保存目标（只需 vault 文件夹存在，不需要 CLI） | [下载](https://obsidian.md) |
+| 🍎 **macOS** | Apple Silicon 推荐 | — |
+
+> 💡 Obsidian 不需要安装 CLI。插件只是把 `.md` 文件写入你的 vault 文件夹，Obsidian 会自动识别。
+
+### 视频转录（可选）
+
+文字/图片帖子零额外依赖。视频帖子的语音转录需要：
+
+| | 安装 | 用途 |
+|:--|:-----|:-----|
+| 🎵 ffmpeg | `brew install ffmpeg` | 提取音频 |
+| 🗣 mlx-whisper | `pip install mlx-whisper` | 语音转文字（本地运行） |
+
 ## 🚀 快速开始
 
 ### 1. 安装插件
@@ -104,15 +123,6 @@ claude /plugin install chenxiachan/xhs-claude-skills
 
 > 🔄 Cookies 过期时 skill 会自动检测并重新引导，无需手动检查。
 
-### 3. 依赖（仅视频转录需要）
-
-| | 安装 | 用途 |
-|:--|:-----|:-----|
-| 🎵 ffmpeg | `brew install ffmpeg` | 提取音频 |
-| 🗣 mlx-whisper | `pip install mlx-whisper` | 语音转文字 |
-
-> 💡 文字/图片帖子零依赖即可运行。视频转录才需要以上工具。
-
 ## ⚙️ 配置
 
 如果路径不同，编辑 `skills/xhs/SKILL.md` 中的常量：
@@ -124,7 +134,7 @@ claude /plugin install chenxiachan/xhs-claude-skills
 
 ## 🎨 个性化
 
-每条笔记包含"**与我的关联**"——根据你的背景自动生成。编辑 `skills/xhs/SKILL.md` 步骤 4 中的用户描述，改成你自己的身份和方向即可。
+每条笔记包含"**与我的关联**"——根据你的背景自动生成。Skill 会读取 Claude Code 的 memory 系统（`~/.claude/projects/*/memory/`）了解你是谁。无需手动配置——正常使用 Claude Code，它会逐步学习你的上下文。
 
 ## 📁 插件结构
 
