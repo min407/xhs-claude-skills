@@ -22,7 +22,7 @@ allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 1. 检查 `~/cookies.json` 是否存在
 2. 如果不存在，告知用户需要从 Chrome 导出 cookies：
    - 在 Chrome 打开 xiaohongshu.com 并确认已登录
-   - 打开 DevTools Console（F12），运行以下代码（会自动复制到剪贴板）：
+   - 打开 DevTools Console，运行以下代码将 cookies 复制到剪贴板：
    ```javascript
    copy(JSON.stringify(document.cookie.split('; ').map(c => {
      const [name, ...rest] = c.split('=');
