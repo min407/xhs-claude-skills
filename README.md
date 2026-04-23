@@ -1,6 +1,6 @@
 <div align="center">
 
-# 小红书创作者工具箱
+# 小红书创作者工具箱·转obsidian
 
 面向小红书内容创作者的 Claude Code skills + 本地剪藏服务
 
