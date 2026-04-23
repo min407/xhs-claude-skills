@@ -1,6 +1,6 @@
 ---
 name: xhs
-description: 提取小红书帖子内容（文字、图片、视频转录），整理为 Markdown 并保存
+description: 为小红书内容创作者提取帖子内容，整理为 Markdown 并保存
 user-invocable: true
 argument-hint: <小红书链接>
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep

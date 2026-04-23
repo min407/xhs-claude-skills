@@ -1,142 +1,60 @@
-<div align="center">
+# XHS Creator Toolkit
 
-# 📕 RedNote to Obsidian
+Claude Code skills plus a local clipping service for Xiaohongshu creators.
 
-[![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-7C3AED)](https://docs.anthropic.com/en/docs/claude-code)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+## What is included
 
-**[中文](README.md)** &nbsp;|&nbsp; English
+1. `skills/` for Claude Code:
+   - `/xhs`
+   - `/xhs-batch`
+   - `/xhs-analyze`
+   - `/xhs-cover`
+2. `service/` for one-click local clipping
 
-</div>
+## Best for
 
----
+- saving Xiaohongshu posts into a structured local knowledge base
+- analyzing saved posts for topic research
+- generating cover ideas for creators
+- clipping the current browser page with a local service
 
-A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin that extracts [RedNote (小红书)](https://www.xiaohongshu.com) posts into concise [Obsidian](https://obsidian.md) notes. Supports text, images, and video — video posts are automatically downloaded and transcribed locally with whisper. No MCP server, no headless browser, no backend. Just cookies + HTTP + local models.
+## Quick start
 
----
-
-## 🚀 Install
-
-### Prerequisites
-
-- [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (runtime environment)
-- [Obsidian](https://obsidian.md) (just needs the vault folder — no CLI required)
-- Video transcription (optional): `brew install ffmpeg` + `pip install mlx-whisper`
-
-### Install the plugin
+### Install in Claude Code
 
 ```bash
 /plugin marketplace add chenxiachan/xhs-claude-skills
 /plugin install rednote-to-obsidian@chenxiachan-xhs-claude-skills
 ```
 
-### First use
+### Export cookies
 
-```
-/xhs https://www.xiaohongshu.com/explore/...
-```
+Export your logged-in Xiaohongshu cookies to:
 
-On first run, the skill auto-guides you through a **30-second cookie setup**:
-
-1. 🌐 Open Chrome → xiaohongshu.com (make sure you're logged in)
-2. 🔧 Open DevTools Console (F12)
-3. 📋 Paste the snippet the skill gives you → cookies auto-copied to clipboard
-4. 💾 Save to `~/cookies.json`
-5. ✅ Done — all future runs use this automatically
-
-> 🔄 When cookies expire, the skill detects it and re-prompts. No manual checking needed.
-
----
-
-## ✨ Features
-
-| Command | Description |
-|:--------|:------------|
-| `/xhs <url>` | 📄 Extract a single post — text, images, video transcription |
-| `/xhs-batch <urls>` | 📦 Batch extract multiple posts |
-| `/xhs-analyze [keyword]` | 🔍 Analyze saved posts — summarize, compare, find patterns |
-
-### 📂 Output
-
-Notes are date-sorted and saved directly in your Obsidian vault under `xhs/`:
-
-```
-xhs/
-├── 2026-03-22 YY-methodology.md
-├── 2026-03-29 ZZ-breakthrough.md
-├── img/
-└── video/
+```text
+~/cookies.json
 ```
 
-Each note is a **decision tool** — scan in 5 seconds, decide to dig deeper or skip:
+### Run the local service
 
-```markdown
-# One-line insight                     ← judgment, not description
-
-Core argument, 2-3 sentences.
-
-**Relevance:** Why this matters to you.
-**Worth digging?** Yes/No + reason.
-
-> [!tip]- Details                       ← collapsed by default
-> Structured content...
-
-> [!info]- Metadata                     ← collapsed by default
-> Source · date · stats · tags
+```bash
+cd service
+python3 server.py
+curl http://127.0.0.1:7895/health
 ```
 
-The "Relevance" line reads from Claude Code's [memory system](https://docs.anthropic.com/en/docs/claude-code) to auto-adapt to your background. No manual config needed.
+See [service/README.md](service/README.md) for details.
 
----
+## Default output path
 
-## 🏗 How it works
-
-```
- RedNote URL
-     │
-     ▼
- ┌─────────────────────────┐
- │  Cookie auth              │  ← Reuses Chrome login session
- └────────────┬────────────┘
-              ▼
- ┌─────────────────────────┐
- │  Parse __INITIAL_STATE__ │  ← One HTTP request, all data
- └────┬──────┬──────┬──────┘
-      ▼      ▼      ▼
-    Text   Images  Video
-                     │
-                curl → ffmpeg → mlx-whisper
-                     │
-                     ▼
-              Obsidian note
+```text
+~/Documents/Obsidian Vault/xhs
 ```
 
----
+You can override it with `XHS_OUTPUT_DIR`.
 
-## ⚙️ Configuration
+## Privacy
 
-| Setting | Default | Description |
-|:--------|:--------|:------------|
-| Cookies | `~/cookies.json` | RedNote auth |
-| Output dir | `~/Documents/Obsidian Vault/xhs` | Obsidian vault path |
-
-Edit constants in `skills/xhs/SKILL.md` if your paths differ.
-
-## 📁 Plugin structure
-
-```
-rednote-to-obsidian/
-├── .claude-plugin/plugin.json
-└── skills/
-    ├── xhs/SKILL.md
-    ├── xhs-batch/SKILL.md
-    └── xhs-analyze/SKILL.md
-```
-
-<div align="center">
-
----
-
-MIT License
-
-</div>
+- cookies stay on your machine
+- this repo ignores cookies, logs, caches, and temp media files
+- do not commit your own exported notes or local vault contents

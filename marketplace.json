@@ -1,10 +1,10 @@
 {
   "name": "chenxiachan-xhs-claude-skills",
-  "description": "小红书转 Obsidian 插件合集",
+  "description": "面向小红书内容创作者的提取、分析、封面生成工具箱",
   "plugins": [
     {
       "name": "rednote-to-obsidian",
-      "description": "把小红书帖子变成简洁的 Obsidian 笔记，支持视频转录",
+      "description": "提取小红书帖子、批量整理、分析内容并辅助生成封面",
       "version": "1.0.0",
       "path": "."
     }

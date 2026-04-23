@@ -1,6 +1,6 @@
 {
   "name": "rednote-to-obsidian",
-  "description": "Extract RedNote (小红书) posts into concise Obsidian notes with video transcription",
+  "description": "Toolkit for Xiaohongshu creators: extract posts, analyze notes, and generate cover ideas",
   "version": "1.0.0",
   "author": {
     "name": "chenxiachan"

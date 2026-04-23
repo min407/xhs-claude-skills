@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.log
+*.err
+*.mp4
+*.wav
+.env
+.venv/
+venv/
+cookies.json
+service/__pycache__/
+service/.cache/
+service/output/

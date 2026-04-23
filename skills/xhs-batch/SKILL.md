@@ -1,6 +1,6 @@
 ---
 name: xhs-batch
-description: 批量提取小红书帖子，整理为本地 Markdown 知识库
+description: 为小红书内容创作者批量提取帖子并整理为本地资料库
 user-invocable: true
 argument-hint: <链接1> <链接2> ... 或粘贴多行链接
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep

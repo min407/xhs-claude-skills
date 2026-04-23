@@ -1,6 +1,6 @@
 ---
 name: xhs-analyze
-description: 分析已提取的小红书收藏内容，做 AI 总结、对比、提炼
+description: 分析已提取的小红书内容，为创作者做 AI 总结、对比和提炼
 user-invocable: true
 argument-hint: <关键词> 或留空分析全部
 allowed-tools: Bash, Read, Glob, Grep
